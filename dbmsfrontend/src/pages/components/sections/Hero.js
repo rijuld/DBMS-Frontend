@@ -69,16 +69,13 @@ const Hero = ({
                 </p>
               <div className="reveal-from-bottom" data-reveal-delay="600">
                 <ButtonGroup>
-                  <Button tag="a" color="primary" wideMobile href="https://cruip.com/">
+                  <Button tag="a" color="primary" wideMobile href="/login_doctor">
                     Login as a doctor
                     </Button>
-                  <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
+                  <Button tag="a" color="dark" wideMobile href="/login_admin">
                     Login as an admin
                     </Button>
-                    <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
-                    Login as an Intensive Care Unit  
-                    </Button>
-                    <Button tag="a" color="primary" wideMobile href="https://cruip.com/">
+                    <Button tag="a" color="primary" wideMobile href="/login_patient">
                     Login as a patient
                     </Button>
                 </ButtonGroup>

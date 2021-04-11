@@ -3,6 +3,9 @@ import {Switch,Route,Link} from "react-router-dom";
 import About from "./About";
 import HoverTable_patient from "./pages/table_patient"
 import HoverTable_doctor from "./pages/table_doctor"
+import Login_doctor from "./pages/login_doctor"
+import Login_patient from "./pages/login_patient"
+import Login_admin from "./pages/login_admin"
 import Register_patient from "./pages/Register_patient"
 import HoverTable_icu from "./pages/table_icu"
 import Landing from "./pages/landing"
@@ -41,8 +44,10 @@ const Swi = (props)=>{
             <Na/>
             {/* <Link to="/about">About</Link> */}
             {/* <button onClick={()=> history.push('/about')}>About</button> */}
-           
             <Switch>
+                <Route exact path ="/login_doctor" children={<Login_doctor/>}/>
+                <Route exact path ="/login_patient" children={<Login_patient/>}/>
+                <Route exact path ="/login_admin" children={<Login_admin/>}/>
                 <Route exact path ="/about" children={<About/>}/>
                 <Route exact path ="/register_patient" children={<Register_patient/>}/>
                 <Route exact path ="/patient_profile/:id" children={<Patient_Profile/>}/>
