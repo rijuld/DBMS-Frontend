@@ -1,8 +1,68 @@
 import React from 'react';
-
+import { useState } from "react";
+import axios from 'axios';
 
 
 function Register_patient() {
+
+    const [fname , setfName]= useState("")
+    const [lName , setlName]= useState("")
+    const [pid , setpid]= useState("")
+    const [time_death , settime_death]= useState("")
+    const [braindead , setbraindead]= useState("")
+    const [agreement , setagreement]= useState("")
+    const [icuid , seticuid]= useState("")
+    const [did , setdid]= useState("")
+    const [password , setpassword]= useState("")
+    const [pulse , setpulse]= useState("")
+    const [temp , settemp]= useState("")
+    const [bpd , setbpd]= useState("")
+    const [bps , setbps]= useState("")
+    const [comor , setcomor]= useState("")
+    const [breathing , setbreathing]= useState("")
+    const [blood , setblood]= useState("")
+    const [gender , setgender]= useState("")
+    const [admission , setadmission]= useState("")
+    const [city , setcity]= useState("")
+    const [state , setstate]= useState("")
+    const [pincode , setpincode]= useState("")
+    const [street , setstreet]= useState("")
+    const [house , sethouse]= useState("")
+    const [reasons , setreasons]= useState("")
+    const [dob , setdob]= useState("")
+  
+    const addPatient =() =>{
+      console.log(pid);
+      axios.post('http://localhost:5000/patient',{
+        pid: pid,
+        first_name: fname,
+         last_name: lName,
+         time_of_death: time_death,
+         agreement: agreement,
+         braindead : braindead,
+         icuid : icuid,
+         did : did,
+         password : password,
+         pulse : pulse,
+         temp,blood_pressure_dis : bpd,
+         blood_pressure_sys : bps,
+         comorbidity_status : comor,
+         breathing_rate : breathing,
+         blood_group : blood,
+         gender : gender,
+         admission_date : admission,
+         city : city,
+         state : state,
+         pincode : pincode,
+         street : street,
+         house_number :house,
+         reasons : reasons,
+         dob : dob
+          
+      }).then(()=>{
+        console.log("success")
+      })
+    }
   return (
     <div className="container">
   <div className="card shadow-lg o-hidden border-0 my-5">
@@ -18,7 +78,12 @@ function Register_patient() {
             <form className="user">
               <div className="form-group row">
                 <div className="col-sm-6 mb-3 mb-sm-0">
-                  <input className="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Patient Name" name="first_name" />
+                  <input className="form-control form-control-user" type="text" id="exampleFirstName" placeholder="First Name " name="first_name" onChange={(e) =>{
+        setfName(e.target.value);
+      }}/>
+      <input className="form-control form-control-user" type="text" id="exampleLastName" placeholder="Last Name" name="last_name" onChange={(e) =>{
+        setfName(e.target.value);
+      }}/>
                 </div>
               </div>
               <div className="form-group">

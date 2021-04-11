@@ -1,6 +1,16 @@
 import React from 'react';
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login_admin() {
+  const [emailid , setemailid]= useState("")
+  const [pass , setlpass]= useState("")
+  const password="0000";
+  const username="root";
+  const history = useHistory();
+  const notify = () => toast("Oops wrong password or username!");
   return (
     <div>
         <div className="container">
@@ -18,10 +28,14 @@ function Login_admin() {
                 </div>
                 <form className="user">
                   <div className="form-group">
-                    <input className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" />
+                    <input className="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter ID..." name="email" onChange={(e) =>{
+        setemailid(e.target.value);
+      }}/>
                   </div>
                   <div className="form-group">
-                    <input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" />
+                    <input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" onChange={(e) =>{
+        setlpass(e.target.value);
+      }}/>
                   </div>
                   <div className="form-group">
                     <div className="custom-control custom-checkbox small">
@@ -30,16 +44,11 @@ function Login_admin() {
                       </div>
                     </div>
                   </div>
-                  <button className="btn btn-primary btn-block text-white btn-user" type="submit">
-                    Login
-                  </button>
+                  <div>
+                  <button onClick={()=>{{emailid==username&&pass==password ? history.push('/about') : notify()}}}>Login</button> 
+                  <ToastContainer />
+                  </div>
                 </form>
-                <div className="text-center">
-                  <a className="small" href="forgot-password.html">Forgot Password?</a>
-                </div>
-                <div className="text-center">
-                  <a className="small" href="/register.html">Create an Account!</a>
-                </div>
               </div>
             </div>
           </div>
