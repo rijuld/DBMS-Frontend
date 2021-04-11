@@ -1,10 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect,useState } from 'react';
 import { useLocation, Switch } from 'react-router-dom';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
 import LayoutDefault from './layouts/LayoutDefault';
 import Home from './views/Home_dashboard_doctor';
-
+import {useParams} from "react-router-dom";
+import axios from 'axios';
 
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
 
@@ -15,6 +16,16 @@ const trackPage = page => {
 
 const Profile_Doctor= () => {
 
+  const {id} = useParams();
+  const [doctor, setDoctor] =  useState();
+  useEffect(()=>{
+      axios.get(`http://localhost:5000/doctor/${id}`)
+    .then(res => {
+      const doctor = res.data;
+      setDoctor(doctor)
+    })
+  },[])
+  console.log(doctor);
   const childRef = useRef();
   let location = useLocation();
 
@@ -30,7 +41,7 @@ const Profile_Doctor= () => {
     <ScrollReveal
       ref={childRef}
       children={() => (
-        <Home layout={LayoutDefault}/>
+        <Home layout={LayoutDefault} doctor={doctor}/>
       )} />
   );
 }
