@@ -18,7 +18,7 @@ const reducer = combineReducers({
   icu: icuReducer,
   icuall: icuallReducer,
   doctor: doctorReducer,
-  doctorall: doctorallReducer
+  doctorall: doctorallReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
