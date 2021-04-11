@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { getIcuAll } from "../redux/ducks/icuall";
+import {usePagination} from 'react-table';
+import {Switch,Route,Link} from "react-router-dom";
 
 import {
   Toolbar,
@@ -17,12 +21,17 @@ import {
 
 const styles = theme => ({
   root: {
+    color: "#000000",
+    padding: 100,
     width: '100%',
     marginTop: theme.spacing(3),
     overflowX: 'auto',
   },
   table: {
     minWidth: 700,
+  },
+  h6: {
+    color: "#000000",
   },
 });
 
@@ -39,48 +48,51 @@ function createData(name, calories, fat, carbs, protein) {
   };
 }
 
-const data = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 function HoverTable_icu(props) {
   const { classes } = props;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getIcuAll());
+  }, [dispatch]);
+
+  let history = useHistory();
+  const icuall = useSelector((state) => state.icuall.icuall);
+  console.log(icuall);
 
   return (
+      <>
+      <h1>ICU Table</h1>
     <Paper className={classes.root}>
       <Toolbar>
-        <div className={classes.title}>
-          <Typography variant="h6">Nutrition</Typography>
-        </div>
+        
       </Toolbar>
       <Table className={classNames(classes.table)}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat (g)</TableCell>
-            <TableCell align="right">Carbs (g)</TableCell>
-            <TableCell align="right">Protein (g)</TableCell>
+            <TableCell>ICU ID</TableCell>
+            <TableCell align="right">Hospital Name</TableCell>
+            <TableCell align="right">Capacity</TableCell>
+        
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(n => ([
+          {icuall && icuall.map(n => ([
+              
             <TableRow key={n.id}>
-              <TableCell>{n.name}</TableCell>
-              <TableCell align="right">{n.calories}</TableCell>
-              <TableCell align="right">{n.fat}</TableCell>
-              <TableCell align="right">{n.carbs}</TableCell>
-              <TableCell align="right">{n.protein}</TableCell>
+              <TableCell>{n.icuid}</TableCell>
+              <TableCell align="right">{n.hospital_name}</TableCell>
+              <TableCell align="right">{n.capacity}</TableCell>
+          
+              
             </TableRow>
+            
           ])
           )}
         </TableBody>
       </Table>
     </Paper>
+    </>
   );
 }
 
