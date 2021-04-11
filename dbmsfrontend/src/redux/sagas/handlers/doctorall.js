@@ -11,9 +11,3 @@ export function* handleGetDoctorAll(action) {
     console.log(error);
   }
 }
-
-
-
-
-
- 

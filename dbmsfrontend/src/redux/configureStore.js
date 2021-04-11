@@ -7,7 +7,7 @@ import patientallReducer from "./ducks/patientall";
 import icuReducer from "./ducks/icu";
 import icuallReducer from "./ducks/icuall";
 import doctorReducer from "./ducks/doctor";
-import doctorallReducer from "./ducks/icuall";
+import doctorallReducer from "./ducks/doctorall";
 import { watcherSaga } from "./sagas/rootsaga";
 
 const reducer = combineReducers({

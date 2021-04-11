@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { getPatientAll } from "../redux/ducks/patientall";
+import { getIcuAll } from "../redux/ducks/icuall";
 import {usePagination} from 'react-table';
 import {Switch,Route,Link} from "react-router-dom";
 
@@ -49,20 +49,20 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 
-function HoverTable_patient(props) {
+function HoverTable_icu(props) {
   const { classes } = props;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPatientAll());
+    dispatch(getIcuAll());
   }, [dispatch]);
 
   let history = useHistory();
-  const patientall = useSelector((state) => state.patientall.patientall);
-  console.log(patientall);
+  const icuall = useSelector((state) => state.icuall.icuall);
+  console.log(icuall);
 
   return (
       <>
-      <h1>Patient Table</h1>
+      <h1>ICU Table</h1>
     <Paper className={classes.root}>
       <Toolbar>
         
@@ -70,22 +70,20 @@ function HoverTable_patient(props) {
       <Table className={classNames(classes.table)}>
         <TableHead>
           <TableRow>
-            <TableCell>First Name</TableCell>
-            <TableCell align="right">Patient id</TableCell>
-            <TableCell align="right">Blood Group</TableCell>
-            <TableCell align="right">Temp</TableCell>
-            <TableCell align="right">DOB</TableCell>
+            <TableCell>ICU ID</TableCell>
+            <TableCell align="right">Hospital Name</TableCell>
+            <TableCell align="right">Capacity</TableCell>
+        
           </TableRow>
         </TableHead>
         <TableBody>
-          {patientall && patientall.map(n => ([
+          {icuall && icuall.map(n => ([
               
             <TableRow key={n.id}>
-              <Link to="/patient_profile/"><TableCell>{n.first_name}</TableCell></Link>
-              <TableCell align="right">{n.pid}</TableCell>
-              <TableCell align="right">{n.blood_group}</TableCell>
-              <TableCell align="right">{n.temp}°C</TableCell>
-              <TableCell align="right">{n.dob.substring(0,10)}</TableCell>
+              <TableCell>{n.icuid}</TableCell>
+              <TableCell align="right">{n.hospital_name}</TableCell>
+              <TableCell align="right">{n.capacity}</TableCell>
+          
               
             </TableRow>
             
@@ -98,8 +96,8 @@ function HoverTable_patient(props) {
   );
 }
 
-HoverTable_patient.propTypes = {
+HoverTable_icu.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HoverTable_patient);
+export default withStyles(styles)(HoverTable_icu);

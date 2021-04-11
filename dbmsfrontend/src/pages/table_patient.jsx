@@ -80,8 +80,9 @@ function HoverTable_patient(props) {
         <TableBody>
           {patientall && patientall.map(n => ([
               
-            <TableRow key={n.id}>
-              <Link to="/patient_profile/"><TableCell>{n.first_name}</TableCell></Link>
+            <TableRow key={n.pid}>
+              <Link to={{pathname: `/patient_profile/${n.pid}`,state: {fromNotifications: true}}}>
+                <TableCell>{n.first_name}</TableCell></Link>
               <TableCell align="right">{n.pid}</TableCell>
               <TableCell align="right">{n.blood_group}</TableCell>
               <TableCell align="right">{n.temp}°C</TableCell>

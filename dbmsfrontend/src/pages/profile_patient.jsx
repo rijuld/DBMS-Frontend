@@ -1,13 +1,11 @@
-import React, { useRef, useEffect } from 'react';
-import { useLocation, Switch } from 'react-router-dom';
+import React, { useRef, useEffect,useState } from 'react';
+import { useLocation} from 'react-router-dom';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
 import LayoutDefault from './layouts/LayoutDefault';
 import Home from './views/Home_dashboard';
-import Patientind from '../Patientind';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPatient } from "../redux/ducks/patient";
 import {useParams} from "react-router-dom";
+import axios from 'axios';
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
 
 const trackPage = page => {
@@ -16,13 +14,15 @@ const trackPage = page => {
 };
 
 const Patient_Profile= () => {
-const {id} = useParams();
-const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPatient(id));
-  }, [dispatch]);
-  const patient = useSelector((state) => state.patient.patient);
+  const {id} = useParams();
+  const [patient, setPatient] =  useState();
+  useEffect(()=>{
+      axios.get(`http://localhost:5000/patient/${id}`)
+    .then(res => {
+      const patient = res.data;
+      setPatient(patient)
+    })
+  },[])
   
   const childRef = useRef();
   let location = useLocation();

@@ -35,6 +35,20 @@ const styles = theme => ({
   },
 });
 
+let id = 0;
+function createData(name, calories, fat, carbs, protein) {
+  id += 1;
+  return {
+    id,
+    name,
+    calories,
+    fat,
+    carbs,
+    protein
+  };
+}
+
+
 function HoverTable_doctor(props) {
   const { classes } = props;
   const dispatch = useDispatch();
@@ -57,19 +71,20 @@ function HoverTable_doctor(props) {
         <TableHead>
           <TableRow>
             <TableCell>First Name</TableCell>
-            <TableCell align="right">Doctor ID</TableCell>
+            <TableCell align="right">Doctor id</TableCell>
             <TableCell align="right">Post</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {doctorall && doctorall.map(n => ([
               
-            <TableRow key={n.did}>
-              <Link to="/doctor_profile/"><TableCell>{n.first_name}</TableCell></Link>
+            <TableRow key={n.id}>
+              <Link to={{pathname: `/doctor_profile/${n.did}`,state: {fromNotifications: true}}}><TableCell>{n.first_name}</TableCell></Link>
               <TableCell align="right">{n.did}</TableCell>
-              <TableCell align="right">{n.post}</TableCell>              
+              <TableCell align="right">{n.post}</TableCell>
+              
             </TableRow>
-            //patient
+            
           ])
           )}
         </TableBody>
@@ -84,3 +99,5 @@ HoverTable_doctor.propTypes = {
 };
 
 export default withStyles(styles)(HoverTable_doctor);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
