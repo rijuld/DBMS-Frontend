@@ -1,29 +1,31 @@
-import React, {useEffect} from 'react';
-import {Switch,Route,Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { Switch, Route, Link } from "react-router-dom";
 import About from "./About";
-import HoverTable_patient from "./pages/table_patient"
-import HoverTable_doctor from "./pages/table_doctor"
-import Login_doctor from "./pages/login_doctor"
-import Login_patient from "./pages/login_patient"
-import Login_admin from "./pages/login_admin"
-import Register_patient from "./pages/Register_patient"
-import HoverTable_icu from "./pages/table_icu"
-import Landing from "./pages/landing"
-import Patient_Profile from "./pages/profile_patient"
-import Patient_Doctor from "./pages/profile_doctor"
+import HoverTable_patient from "./pages/table_patient";
+import HoverTable_doctor from "./pages/table_doctor";
+import Login_doctor from "./pages/login_doctor";
+import Login_patient from "./pages/login_patient";
+import Login_admin from "./pages/login_admin";
+import Register_patient from "./pages/Register_patient";
+import HoverTable_icu from "./pages/table_icu";
+import Landing from "./pages/landing";
+import Patient_Profile from "./pages/profile_patient";
+import Patient_Doctor from "./pages/profile_doctor";
 import Patient from "./Patient";
 import Patientind from "./Patientind";
 import Counter from "./test1";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./redux/ducks/user";
 import { getPatient } from "./redux/ducks/patient";
 import { getPatientAll } from "./redux/ducks/patientall";
-import Patientcard from './Patientcard';
-import Profile_Doctor from './pages/profile_doctor';
-import Na from './pages/navigation/navbar'
-const Swi = (props)=>{
-    const dispatch = useDispatch();
+import Patientcard from "./Patientcard";
+import Profile_Doctor from "./pages/profile_doctor";
+import Na from "./pages/navigation/navbar";
+import Admin from "./pages/admin";
+import Add_patient from "./pages/add_patient";
+const Swi = (props) => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser());
@@ -37,6 +39,7 @@ const Swi = (props)=>{
   console.log(patient);
   const patientall = useSelector((state) => state.patientall.patientall);
   console.log(patientall);
+
     const count = useSelector((state)=>state.counter.count)
     const history = useHistory();
     return(
@@ -59,10 +62,13 @@ const Swi = (props)=>{
                 <Route exact path ="/counter" render ={(props) => <Counter {...props} />}/>
                 <Route exact path ="/" render ={(props) => <Landing {...props} />}/>
                 <Route exact path ="/doctor_profile/:id" render ={(props) => <Profile_Doctor {...props} />}/>
+                <Route exact path="/add_patient" render={(props) => <Add_patient {...props} />}
+                <Route exact path="/admin" render={(props) => <Admin {...props} />} />
                 
             </Switch>
         </div>
 
     );
+
 };
 export default Swi;
