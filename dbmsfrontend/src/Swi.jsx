@@ -3,6 +3,10 @@ import {Switch,Route,Link} from "react-router-dom";
 import About from "./About";
 import HoverTable_patient from "./pages/table_patient"
 import HoverTable_doctor from "./pages/table_doctor"
+import Login_doctor from "./pages/login_doctor"
+import Login_patient from "./pages/login_patient"
+import Login_admin from "./pages/login_admin"
+import Register_patient from "./pages/Register_patient"
 import HoverTable_icu from "./pages/table_icu"
 import Landing from "./pages/landing"
 import Patient_Profile from "./pages/profile_patient"
@@ -17,7 +21,7 @@ import { getPatient } from "./redux/ducks/patient";
 import { getPatientAll } from "./redux/ducks/patientall";
 import Patientcard from './Patientcard';
 import Profile_Doctor from './pages/profile_doctor';
-
+import Na from './pages/navigation/navbar'
 const Swi = (props)=>{
     const dispatch = useDispatch();
 
@@ -37,20 +41,15 @@ const Swi = (props)=>{
     const history = useHistory();
     return(
         <div>
- 
+            <Na/>
             {/* <Link to="/about">About</Link> */}
-            <button onClick={()=> history.push('/about')}>About</button>
-            <button onClick={()=> history.push('/patientall')}>Patient All</button>
-            <button onClick={()=> history.push('/doctorall')}>Doctor All</button>
-            <button onClick={()=> history.push('/icuall')}>ICU All</button>
-            <button onClick={()=> history.push('/patient')}>Patient</button>
-            <button onClick={()=> history.push('/patient/1')}>Content</button>
-            <button onClick={()=> history.push('/counter')}>Counter</button>
-            <button onClick={()=> history.push('/landing')}>Landing</button>
-            <button onClick={()=> history.push('/patient_profile/1')}>Patient Profile</button>
-            <button onClick={()=> history.push('/doctor_profile')}>Doctor Profile</button>
+            {/* <button onClick={()=> history.push('/about')}>About</button> */}
             <Switch>
+                <Route exact path ="/login_doctor" children={<Login_doctor/>}/>
+                <Route exact path ="/login_patient" children={<Login_patient/>}/>
+                <Route exact path ="/login_admin" children={<Login_admin/>}/>
                 <Route exact path ="/about" children={<About/>}/>
+                <Route exact path ="/register_patient" children={<Register_patient/>}/>
                 <Route exact path ="/patient_profile/:id" children={<Patient_Profile/>}/>
                 <Route exact path ="/patientall" children={<HoverTable_patient/>}/>
                 <Route exact path ="/doctorall" children={<HoverTable_doctor/>}/>
@@ -58,7 +57,7 @@ const Swi = (props)=>{
                 <Route exact path ="/patient" render ={(props) => <Patient {...props}/>}/>
                 <Route exact path ="/patient/:id" render ={(props) => <Patientind {...props}/>}/>
                 <Route exact path ="/counter" render ={(props) => <Counter {...props} />}/>
-                <Route exact path ="/landing" render ={(props) => <Landing {...props} />}/>
+                <Route exact path ="/" render ={(props) => <Landing {...props} />}/>
                 <Route exact path ="/doctor_profile" render ={(props) => <Profile_Doctor {...props} />}/>
                 
             </Switch>

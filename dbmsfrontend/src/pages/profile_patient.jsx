@@ -20,7 +20,7 @@ const {id} = useParams();
 const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPatient());
+    dispatch(getPatient(id));
   }, [dispatch]);
   const patient = useSelector((state) => state.patient.patient);
   
