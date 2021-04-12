@@ -23,6 +23,7 @@ const Testimonial = ({
   ...props
 }) => {
 
+  const {doctor,doctordepartment}= props;
   const outerClasses = classNames(
     'testimonial section',
     topOuterDivider && 'has-top-divider',
@@ -44,8 +45,8 @@ const Testimonial = ({
   );
 
   const sectionHeader = {
-    title: 'Hi, Doctor Name',
-    paragraph: 'Doctor details'
+    title: `Hi, ${doctor &&(doctor.first_name)} ${doctor &&(doctor.last_name)}`,
+    paragraph: `${doctor &&(doctor.post)}`
   };
 
   return (
@@ -62,14 +63,14 @@ const Testimonial = ({
               <div className="tiles-item-inner">
                 <div className="testimonial-item-content">
                   <p className="text-sm mb-0">
-                    —DETAIL 1
+                    YOUR DATE OF BIRTH
                       </p>
                 </div>
                 <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-                  <span className="testimonial-item-name text-color-high">Roman Level</span>
-                  <span className="text-color-low"> / </span>
+                  <span className="testimonial-item-name text-color-high"><h3>{doctor &&(doctor.dob.substring(0,10))}</h3></span>
+                  <span className="text-color-low">  </span>
                   <span className="testimonial-item-link">
-                    <a href="#0">AppName</a>
+  <a href="#0"></a>
                   </span>
                 </div>
               </div>
@@ -79,14 +80,14 @@ const Testimonial = ({
               <div className="tiles-item-inner">
                 <div className="testimonial-item-content">
                   <p className="text-sm mb-0">
-                    — DETAIL 2
+                    YOUR GENDER
                       </p>
                 </div>
                 <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-                  <span className="testimonial-item-name text-color-high">Diana Rynzhuk</span>
-                  <span className="text-color-low"> / </span>
+                  <span className="testimonial-item-name text-color-high"><h3>{doctor &&(doctor.gender)}</h3></span>
+                  <span className="text-color-low">  </span>
                   <span className="testimonial-item-link">
-                    <a href="#0">AppName</a>
+  <a href="#0"></a>
                   </span>
                 </div>
               </div>
@@ -96,14 +97,14 @@ const Testimonial = ({
               <div className="tiles-item-inner">
                 <div className="testimonial-item-content">
                   <p className="text-sm mb-0">
-                    — DETAIL 3
+                    YOUR DEPARTMENT
                       </p>
                 </div>
                 <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-                  <span className="testimonial-item-name text-color-high">Ben Stafford</span>
-                  <span className="text-color-low"> / </span>
+                  <span className="testimonial-item-name text-color-high"><h3>{doctordepartment && doctordepartment.dept_name}</h3></span>
+                  <span className="text-color-low">  </span>
                   <span className="testimonial-item-link">
-                    <a href="#0">AppName</a>
+                    <a href="#0"></a>
                   </span>
                 </div>
               </div>
