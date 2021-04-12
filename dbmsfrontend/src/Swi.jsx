@@ -6,6 +6,8 @@ import HoverTable_doctor from "./pages/table_doctor";
 import Login_doctor from "./pages/login_doctor";
 import Login_patient from "./pages/login_patient";
 import Login_admin from "./pages/login_admin";
+import Organ_donate from "./pages/organ_donate";
+import Organ_recieve from "./pages/organ_receive";
 import Register_patient from "./pages/Register_patient";
 import HoverTable_icu from "./pages/table_icu";
 import Landing from "./pages/landing";
@@ -62,8 +64,10 @@ const Swi = (props) => {
                 <Route exact path ="/counter" render ={(props) => <Counter {...props} />}/>
                 <Route exact path ="/" render ={(props) => <Landing {...props} />}/>
                 <Route exact path ="/doctor_profile/:id" render ={(props) => <Profile_Doctor {...props} />}/>
-                <Route exact path="/add_patient" render={(props) => <Add_patient {...props} />}
-                <Route exact path="/admin" render={(props) => <Admin {...props} />} />
+                <Route exact path ="/add_patient" render ={(props) => <Add_patient {...props} />}/>
+                <Route exact path ="/admin" render ={(props) => <Admin {...props} />}/>
+                <Route exact path ="/organ_donate/:id" render ={(props) => <Organ_donate {...props} />}/>
+                <Route exact path ="/organ_receive/:id" render ={(props) => <Organ_recieve {...props} />}/>
                 
             </Switch>
         </div>

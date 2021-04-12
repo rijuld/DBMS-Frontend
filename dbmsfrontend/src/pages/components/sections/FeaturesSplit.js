@@ -29,7 +29,7 @@ const FeaturesSplit = ({
   ...props
 }) => {
 
-  const {patient}= props;
+  const {patient,patienticu,patientdoctor}= props;
   const outerClasses = classNames(
     'features-split section',
     topOuterDivider && 'has-top-divider',
@@ -57,6 +57,7 @@ const FeaturesSplit = ({
     paragraph: `House number-${patient &&(patient.house_number)}, Street-${patient &&(patient.street)} , City-${patient &&(patient.city)}  ,State-${patient &&(patient.state)} , Pincode-${patient &&(patient.pincode)}  `
   };
 
+  const t=patient && (patient.pid);
   return (
     <section
       {...props}
@@ -69,10 +70,10 @@ const FeaturesSplit = ({
           <SectionHeader data={sectionHeader} className="center-content" />
           <div className={splitClasses}>
         
-                  <Button tag="a" color="primary" wideMobile href="https://cruip.com/">
+                  <Button tag="a" color="primary" wideMobile href={`/organ_donate/${t}`}>
                     DONATE AN ORGAN 
                     </Button>
-                  <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
+                  <Button tag="a" color="dark" wideMobile href={`/organ_receive/${t}`}>
                     ASK FOR AN ORGAN
                     </Button>
                   
@@ -184,22 +185,18 @@ const FeaturesSplit = ({
                   UNDER THE DOCTOR
                   </div>
                 <h3 className="mt-0 mb-12">
-                SELECT DNAME FROM DOCTOR D,PATIENT P WHERE P.DID=D.DID;
+                Dr. {patientdoctor&&patientdoctor.first_name} {patientdoctor&&patientdoctor.last_name}
                   </h3>
-                <p className="m-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
+               
               </div>
               <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
                 <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
                   Under the ICU
                   </div>
                 <h3 className="mt-0 mb-12">
-                SELECT ICUNAME FROM ICU I,PATIENT P WHERE P.ICUID=I.ICUID;
+                {patienticu&&patienticu.hospital_name}
                   </h3>
-                <p className="m-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
+               
               </div>
             </div>
 
