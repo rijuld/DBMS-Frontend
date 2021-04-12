@@ -1,7 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import qs from "qs";
 function Add_patient() {
   const [fname, setfName] = useState("");
   const [lName, setlName] = useState("");
@@ -30,8 +34,42 @@ function Add_patient() {
   const [dob, setdob] = useState("0000-00-00");
 
   const Add_patient = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:5000/patient",
+      data: qs.stringify({
+        pid: pid,
+        first_name: fname,
+        last_name: lName,
+        time_of_death: time_death,
+        agreement: agreement,
+        braindead: braindead,
+        icuid: icuid,
+        did: did,
+        password: password,
+        pulse: pulse,
+        temp,
+        blood_pressure_dis: bpd,
+        blood_pressure_sys: bps,
+        comorbidity_status: comor,
+        breathing_rate: breathing,
+        blood_group: blood,
+        gender: gender,
+        admission_date: admission,
+        city: city,
+        state: state,
+        pincode: pincode,
+        street: street,
+        house_number: house,
+        reasons: reasons,
+        dob: dob,
+      }),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    });
     console.log(pid);
-    axios
+   /*  axios
       .post("http://localhost:5000/patient", {
         pid: pid,
         first_name: fname,
@@ -61,7 +99,7 @@ function Add_patient() {
       })
       .then(() => {
         console.log("success");
-      });
+      }); */
   };
   return (
     <div className="container">
