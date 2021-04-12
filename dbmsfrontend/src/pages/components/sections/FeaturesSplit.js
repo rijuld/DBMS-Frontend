@@ -57,6 +57,7 @@ const FeaturesSplit = ({
     paragraph: `House number-${patient &&(patient.house_number)}, Street-${patient &&(patient.street)} , City-${patient &&(patient.city)}  ,State-${patient &&(patient.state)} , Pincode-${patient &&(patient.pincode)}  `
   };
 
+  const t=patient && (patient.pid);
   return (
     <section
       {...props}
@@ -69,10 +70,10 @@ const FeaturesSplit = ({
           <SectionHeader data={sectionHeader} className="center-content" />
           <div className={splitClasses}>
         
-                  <Button tag="a" color="primary" wideMobile href="https://cruip.com/">
+                  <Button tag="a" color="primary" wideMobile href={`/organ_donate/${t}`}>
                     DONATE AN ORGAN 
                     </Button>
-                  <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
+                  <Button tag="a" color="dark" wideMobile href={`/organ_receive/${t}`}>
                     ASK FOR AN ORGAN
                     </Button>
                   
