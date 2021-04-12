@@ -23,7 +23,7 @@ const Testimonial = ({
   ...props
 }) => {
 
-  const {doctor}= props;
+  const {doctor,doctordepartment}= props;
   const outerClasses = classNames(
     'testimonial section',
     topOuterDivider && 'has-top-divider',
@@ -67,7 +67,7 @@ const Testimonial = ({
                       </p>
                 </div>
                 <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-                  <span className="testimonial-item-name text-color-high">{doctor &&(doctor.dob.substring(0,10))}</span>
+                  <span className="testimonial-item-name text-color-high"><h3>{doctor &&(doctor.dob.substring(0,10))}</h3></span>
                   <span className="text-color-low">  </span>
                   <span className="testimonial-item-link">
   <a href="#0"></a>
@@ -84,7 +84,7 @@ const Testimonial = ({
                       </p>
                 </div>
                 <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-                  <span className="testimonial-item-name text-color-high">{doctor &&(doctor.gender)}</span>
+                  <span className="testimonial-item-name text-color-high"><h3>{doctor &&(doctor.gender)}</h3></span>
                   <span className="text-color-low">  </span>
                   <span className="testimonial-item-link">
   <a href="#0"></a>
@@ -101,7 +101,7 @@ const Testimonial = ({
                       </p>
                 </div>
                 <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-                  <span className="testimonial-item-name text-color-high">FIND HER/HIS DEPARTMENT</span>
+                  <span className="testimonial-item-name text-color-high"><h3>{doctordepartment && doctordepartment.dept_name}</h3></span>
                   <span className="text-color-low">  </span>
                   <span className="testimonial-item-link">
                     <a href="#0"></a>

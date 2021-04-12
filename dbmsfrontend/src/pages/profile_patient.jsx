@@ -1,5 +1,5 @@
 import React, { useRef, useEffect,useState } from 'react';
-import { useLocation} from 'react-router-dom';
+import { useLocation, Switch } from 'react-router-dom';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
 import LayoutDefault from './layouts/LayoutDefault';
@@ -16,12 +16,28 @@ const trackPage = page => {
 const Patient_Profile= () => {
   const {id} = useParams();
   const [patient, setPatient] =  useState();
+  const [patientdoctor, setPatientDoctor] =  useState();
+  const [patienticu, setPatientIcu] =  useState();
   useEffect(()=>{
       axios.get(`http://localhost:5000/patient/${id}`)
     .then(res => {
       const patient = res.data;
       setPatient(patient)
     })
+  },[])
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/patientdoctor/${id}`)
+  .then(res => {
+    const patientdoctor = res.data;
+    setPatientDoctor(patientdoctor)
+  })
+},[])
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/patienticu/${id}`)
+  .then(res => {
+    const patienticu = res.data;
+    setPatientIcu(patienticu)
+  })
   },[])
   
   const childRef = useRef();
@@ -41,7 +57,7 @@ const Patient_Profile= () => {
     <ScrollReveal
       ref={childRef}
       children={() => (
-        <Home layout={LayoutDefault} patient={patient}/>
+        <Home layout={LayoutDefault} patient={patient} patienticu={patienticu} patientdoctor={patientdoctor}/>
       )} />
       </>
   );

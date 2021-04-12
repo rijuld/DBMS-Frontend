@@ -62,8 +62,8 @@ const Swi = (props) => {
                 <Route exact path ="/counter" render ={(props) => <Counter {...props} />}/>
                 <Route exact path ="/" render ={(props) => <Landing {...props} />}/>
                 <Route exact path ="/doctor_profile/:id" render ={(props) => <Profile_Doctor {...props} />}/>
-                <Route exact path="/add_patient" render={(props) => <Add_patient {...props} />}
-                <Route exact path="/admin" render={(props) => <Admin {...props} />} />
+                <Route exact path ="/add_patient" render ={(props) => <Add_patient {...props} />}/>
+                <Route exact path ="/admin" render ={(props) => <Admin {...props} />}/>
                 
             </Switch>
         </div>

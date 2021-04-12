@@ -18,13 +18,22 @@ const Profile_Doctor= () => {
 
   const {id} = useParams();
   const [doctor, setDoctor] =  useState();
+  const [doctordepartment, setDoctorDepartment] =  useState();
   useEffect(()=>{
-      axios.get(`http://localhost:5000/doctor/${id}`)
-    .then(res => {
-      const doctor = res.data;
-      setDoctor(doctor)
-    })
+    axios.get(`http://localhost:5000/doctor/${id}`)
+  .then(res => {
+    const doctor = res.data;
+    setDoctor(doctor)
+  })
   },[])
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/doctordepartment/${id}`)
+  .then(res => {
+    const doctordepartment = res.data;
+    setDoctorDepartment(doctordepartment)
+  })
+  },[])
+
   console.log(doctor);
   const childRef = useRef();
   let location = useLocation();
@@ -41,7 +50,7 @@ const Profile_Doctor= () => {
     <ScrollReveal
       ref={childRef}
       children={() => (
-        <Home layout={LayoutDefault} doctor={doctor}/>
+        <Home layout={LayoutDefault} doctor={doctor} doctordepartment={doctordepartment}/>
       )} />
   );
 }
