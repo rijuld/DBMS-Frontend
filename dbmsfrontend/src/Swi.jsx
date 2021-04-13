@@ -26,6 +26,7 @@ import Profile_Doctor from "./pages/profile_doctor";
 import Na from "./pages/navigation/navbar";
 import Admin from "./pages/admin";
 import Add_patient from "./pages/add_patient";
+import Add_icu from "./pages/add_icu";
 const Swi = (props) => {
   const dispatch = useDispatch();
 
@@ -65,6 +66,7 @@ const Swi = (props) => {
                 <Route exact path ="/" render ={(props) => <Landing {...props} />}/>
                 <Route exact path ="/doctor_profile/:id" render ={(props) => <Profile_Doctor {...props} />}/>
                 <Route exact path ="/add_patient" render ={(props) => <Add_patient {...props} />}/>
+                <Route exact path ="/add_icu" render ={(props) => <Add_icu {...props} />}/>
                 <Route exact path ="/admin" render ={(props) => <Admin {...props} />}/>
                 <Route exact path ="/organ_donate/:id" render ={(props) => <Organ_donate {...props} />}/>
                 <Route exact path ="/organ_receive/:id" render ={(props) => <Organ_recieve {...props} />}/>

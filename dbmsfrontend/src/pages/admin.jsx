@@ -77,6 +77,18 @@ const Admin = ({
             </Button>
             <Button
               tag="a"
+              color="primary"
+              wideMobile
+              onClick={() => {
+                {
+                  history.push("/add_icu");
+                }
+              }}
+            >
+              ADD ICU
+            </Button>
+            <Button
+              tag="a"
               color="dark"
               wideMobile
               href="https://github.com/cruip/open-react-template/"

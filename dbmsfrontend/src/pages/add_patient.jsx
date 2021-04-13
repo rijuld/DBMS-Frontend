@@ -1,6 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+import qs from "qs";
 
 function Add_patient() {
   const [fname, setfName] = useState("");
@@ -29,39 +34,43 @@ function Add_patient() {
   const [reasons, setreasons] = useState("");
   const [dob, setdob] = useState("0000-00-00");
 
-  const Add_patient = () => {
+  const addPatient =() =>{
     console.log(pid);
-    axios
-      .post("http://localhost:5000/patient", {
+    axios({ 
+      method: "post",
+      url: "http://localhost:5000/patient",
+      data: qs.stringify({
         pid: pid,
-        first_name: fname,
-        last_name: lName,
-        time_of_death: time_death,
-        agreement: agreement,
-        braindead: braindead,
-        icuid: icuid,
-        did: did,
-        password: password,
-        pulse: pulse,
-        temp,
-        blood_pressure_dis: bpd,
-        blood_pressure_sys: bps,
-        comorbidity_status: comor,
-        breathing_rate: breathing,
-        blood_group: blood,
-        gender: gender,
-        admission_date: admission,
-        city: city,
-        state: state,
-        pincode: pincode,
-        street: street,
-        house_number: house,
-        reasons: reasons,
-        dob: dob,
-      })
-      .then(() => {
-        console.log("success");
-      });
+      first_name: fname,
+       last_name: lName,
+       time_of_death: time_death,
+       agreement: agreement,
+       braindead : braindead,
+       icuid : icuid,
+       did : did,
+       password : password,
+       pulse : pulse,
+       temp : temp,
+       blood_pressure_dis : bpd,
+       blood_pressure_sys : bps,
+       comorbidity_status : comor,
+       breathing_rate : breathing,
+       blood_group : blood,
+       gender : gender,
+       admission_date : admission,
+       city : city,
+       state : state,
+       pincode : pincode,
+       street : street,
+       house_number :house,
+       reasons : reasons,
+       dob : dob
+      }),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    });
+    
   };
   return (
     <div className="container">
@@ -340,7 +349,11 @@ function Add_patient() {
                   <button
                     className="btn btn-primary btn-block text-white btn-user"
                     type="submit"
-                    onClick={Add_patient}
+                    onClick={() => {
+                      {
+                        addPatient();
+                      }
+                    }}
                   >
                     Register Account
                   </button>
