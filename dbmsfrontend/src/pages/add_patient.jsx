@@ -34,7 +34,7 @@ function Add_patient() {
   const [reasons, setreasons] = useState("");
   const [dob, setdob] = useState("0000-00-00");
   const [phone_no1, setp1] = useState("0");
-  const [phone_no2, setp2] = useState("0");
+  const [phone_no2, setp2] = useState("");
 
   const addPatient = () => {
     console.log(pid);
@@ -78,12 +78,21 @@ function Add_patient() {
       url: "http://localhost:5000/patientphone",
       data: qs.stringify({
         pid: pid,
-        phone_no: phone_no1 ? phone_no1:,
+        phone_no: phone_no1,
       }),
       headers: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     });
+    phone_no2 &&
+      axios({
+        method: "post",
+        url: "http://localhost:5000/patientphone",
+        data: qs.stringify({
+          pid: pid,
+          phone_no: phone_no2,
+        }),
+      });
   };
   return (
     <div className="container">
