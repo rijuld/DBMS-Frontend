@@ -71,6 +71,7 @@ function Add_patient() {
       },
     });
     
+
   };
   return (
     <div className="container">
