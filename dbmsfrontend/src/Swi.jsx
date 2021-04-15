@@ -48,42 +48,27 @@ const Swi = (props) => {
   const patientall = useSelector((state) => state.patientall.patientall);
   console.log(patientall);
 
-    const count = useSelector((state)=>state.counter.count)
-    const history = useHistory();
-    return(
-        <div>
-            <Na/>
-            {/* <Link to="/about">About</Link> */}
-            {/* <button onClick={()=> history.push('/about')}>About</button> */}
-            <Switch>
-                <Route exact path ="/login_doctor" children={<Login_doctor/>}/>
-                <Route exact path ="/login_patient" children={<Login_patient/>}/>
-                <Route exact path ="/login_admin" children={<Login_admin/>}/>
-                <Route exact path ="/about" children={<About/>}/>
-                <Route exact path ="/register_patient" children={<Register_patient/>}/>
-                <Route exact path ="/patient_profile/:id" children={<Patient_Profile/>}/>
-                <Route exact path ="/patientall" children={<HoverTable_patient/>}/>
-                <Route exact path ="/doctorall" children={<HoverTable_doctor/>}/>
-                <Route exact path ="/icuall" children={<HoverTable_icu/>}/>
-                <Route exact path ="/patient" render ={(props) => <Patient {...props}/>}/>
-                <Route exact path ="/patient/:id" render ={(props) => <Patientind {...props}/>}/>
-                <Route exact path ="/counter" render ={(props) => <Counter {...props} />}/>
-                <Route exact path ="/" render ={(props) => <Landing {...props} />}/>
-                <Route exact path ="/doctor_profile/:id" render ={(props) => <Profile_Doctor {...props} />}/>
-                <Route exact path ="/add_patient" render ={(props) => <Add_patient {...props} />}/>
-                <Route exact path ="/add_icu" render ={(props) => <Add_icu {...props} />}/>
-                <Route exact path ="/admin" render ={(props) => <Admin {...props} />}/>
-                <Route exact path ="/organ_donate/:id" render ={(props) => <Organ_donate {...props} />}/>
-                <Route exact path ="/organ_receive/:id" render ={(props) => <Organ_recieve {...props} />}/>
-                
-            </Switch>
-        </div>
-
-    );
-
- 
-
-
+  const count = useSelector((state) => state.counter.count);
+  const history = useHistory();
+  return (
+    <div>
+      <Na />
+      {/* <Link to="/about">About</Link> */}
+      {/* <button onClick={()=> history.push('/about')}>About</button> */}
+      <Switch>
+        <Route exact path="/login_doctor" children={<Login_doctor />} />
+        <Route exact path="/login_patient" children={<Login_patient />} />
+        <Route exact path="/login_admin" children={<Login_admin />} />
+        <Route exact path="/about" children={<About />} />
+        <Route exact path="/register_patient" children={<Register_patient />} />
+        <Route
+          exact
+          path="/patient_profile/:id"
+          children={<Patient_Profile />}
+        />
+        <Route exact path="/patientall" children={<HoverTable_patient />} />
+        <Route exact path="/doctorall" children={<HoverTable_doctor />} />
+        <Route exact path="/icuall" children={<HoverTable_icu />} />
         <Route
           exact
           path="/patient"
@@ -109,6 +94,11 @@ const Swi = (props) => {
           exact
           path="/add_patient"
           render={(props) => <Add_patient {...props} />}
+        />
+        <Route
+          exact
+          path="/add_icu"
+          render={(props) => <Add_icu {...props} />}
         />
         <Route exact path="/admin" render={(props) => <Admin {...props} />} />
         <Route
