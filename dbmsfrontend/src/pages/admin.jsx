@@ -77,6 +77,30 @@ const Admin = ({
             >
               ADD PATIENT
             </Button>
+           <Button
+              tag="a"
+              color="primary"
+              wideMobile
+              onClick={() => {
+                {
+                  history.push("/add_icu");
+                }
+              }}
+            >
+              ADD ICU
+            </Button>
+            <Button
+              tag="a"
+              color="primary"
+              wideMobile
+              onClick={() => {
+                {
+                  history.push("/add_icu");
+                }
+              }}
+            >
+              ADD ICU
+            </Button>
             <Button
               tag="a"
               color="dark"

@@ -27,6 +27,9 @@ import Profile_Doctor from "./pages/profile_doctor";
 import Na from "./pages/navigation/navbar";
 import Admin from "./pages/admin";
 import Add_patient from "./pages/add_patient";
+
+import Add_icu from "./pages/add_icu";
+
 import Success from "./pages/success";
 
 const Swi = (props) => {
@@ -56,9 +59,6 @@ const Swi = (props) => {
         <Route exact path="/login_doctor" children={<Login_doctor />} />
         <Route exact path="/login_patient" children={<Login_patient />} />
         <Route exact path="/login_admin" children={<Login_admin />} />
-        <Route exact path="/patientall" children={<HoverTable_patient />} />
-        <Route exact path="/doctorall" children={<HoverTable_doctor />} />
-        <Route exact path="/icuall" children={<HoverTable_icu />} />
         <Route exact path="/about" children={<About />} />
         <Route exact path="/register_patient" children={<Register_patient />} />
         <Route
@@ -66,7 +66,9 @@ const Swi = (props) => {
           path="/patient_profile/:id"
           children={<Patient_Profile />}
         />
-
+        <Route exact path="/patientall" children={<HoverTable_patient />} />
+        <Route exact path="/doctorall" children={<HoverTable_doctor />} />
+        <Route exact path="/icuall" children={<HoverTable_icu />} />
         <Route
           exact
           path="/patient"
@@ -92,6 +94,11 @@ const Swi = (props) => {
           exact
           path="/add_patient"
           render={(props) => <Add_patient {...props} />}
+        />
+        <Route
+          exact
+          path="/add_icu"
+          render={(props) => <Add_icu {...props} />}
         />
         <Route exact path="/admin" render={(props) => <Admin {...props} />} />
         <Route
