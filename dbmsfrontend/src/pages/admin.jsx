@@ -6,7 +6,7 @@ import Image from "../pages/components/elements/Image.js";
 import ButtonGroup from "../pages/components/elements/ButtonGroup.js";
 import Button from "../pages/components/elements/Button.js";
 import { useHistory } from "react-router-dom";
-
+import Na_admin from "./navigation/navbar_admin"
 const propTypes = {
   ...SectionSplitProps.types,
 };
@@ -58,7 +58,9 @@ const Admin = ({
   };
 
   return (
+    
     <section {...props} className={outerClasses}>
+      <Na_admin />
       <div className="container">
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />

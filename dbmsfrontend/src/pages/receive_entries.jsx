@@ -9,6 +9,7 @@ import { usePagination } from "react-table";
 import { Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Na_patient from "./navigation/navbar_patient";
 import {
   Toolbar,
   Typography,
@@ -71,6 +72,7 @@ function Receive_entries(props) {
   let history = useHistory();
   return (
     <>
+    <Na_patient/>
       <h1>Select one of the Donors below</h1>
       <h6>
         The following donors are shortlisted based on pincode and the organ

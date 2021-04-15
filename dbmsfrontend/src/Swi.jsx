@@ -28,6 +28,7 @@ import Na from "./pages/navigation/navbar";
 import Admin from "./pages/admin";
 import Add_patient from "./pages/add_patient";
 import Success from "./pages/success";
+
 const Swi = (props) => {
   const dispatch = useDispatch();
 
@@ -48,7 +49,7 @@ const Swi = (props) => {
   const history = useHistory();
   return (
     <div>
-      <Na />
+  
       {/* <Link to="/about">About</Link> */}
       {/* <button onClick={()=> history.push('/about')}>About</button> */}
       <Switch>

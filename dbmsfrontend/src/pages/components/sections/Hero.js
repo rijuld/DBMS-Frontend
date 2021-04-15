@@ -5,7 +5,7 @@ import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
 import Image from '../elements/Image';
 import Modal from '../elements/Modal';
-
+import logoa from "./logoa.svg";
 const propTypes = {
   ...SectionProps.types
 }
@@ -86,6 +86,12 @@ const Hero = ({
        
         </div>
       </div>
+      <img
+        src={logoa}
+        alt="fireSpot"
+        className="col-12 justify-content-center"
+        style={{ height: 500, backgroundColor: "white"}}
+      />
     </section>
   );
 }
