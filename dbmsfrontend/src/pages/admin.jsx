@@ -95,11 +95,11 @@ const Admin = ({
               wideMobile
               onClick={() => {
                 {
-                  history.push("/add_icu");
+                  history.push("/add_doctor");
                 }
               }}
             >
-              ADD ICU
+              ADD DOCTOR
             </Button>
           
           </div>

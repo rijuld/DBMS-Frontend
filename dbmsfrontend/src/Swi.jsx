@@ -19,6 +19,7 @@ import { getPatientAll } from "./redux/ducks/patientall";
 import Profile_Doctor from "./pages/profile_doctor";
 import Admin from "./pages/admin";
 import Add_patient from "./pages/add_patient";
+import Add_doctor from "./pages/add_doctor";
 
 import Add_icu from "./pages/add_icu";
 
@@ -56,6 +57,11 @@ const Swi = (props) => {
           exact
           path="/add_patient"
           render={(props) => <Add_patient {...props} />}
+        />
+         <Route
+          exact
+          path="/add_doctor"
+          render={(props) => <Add_doctor {...props} />}
         />
         <Route
           exact
