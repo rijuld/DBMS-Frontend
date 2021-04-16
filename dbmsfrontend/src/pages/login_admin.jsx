@@ -10,7 +10,6 @@ function Login_admin() {
   const password = "0000";
   const username = "root";
   const history = useHistory();
-  const notify = () => toast("Oops wrong password or username!");
   return (
     <div>
       <div className="container">
@@ -77,7 +76,7 @@ function Login_admin() {
                               {
                                 emailid == username && pass == password
                                   ? history.push("/admin")
-                                  : notify();
+                                  : toast("Oops wrong password or username!");
                               }
                             }}
                           >

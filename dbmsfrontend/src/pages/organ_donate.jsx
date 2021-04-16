@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
+
 function Organ_donate() {
   const { id } = useParams();
   const [organ, setOrgan] = useState();
@@ -17,7 +18,7 @@ function Organ_donate() {
     });
   }, []);
   const action = () => {
-    axios({ 
+    axios({
       method: "post",
       url: "http://localhost:5000/donateorgans",
       data: qs.stringify({
@@ -44,6 +45,12 @@ function Organ_donate() {
               <div className="card-body p-0">
                 <div className="row">
                   <div className="col-lg-6 d-none d-lg-flex"></div>
+                  <div
+                    class="flex-grow-1 bg-login-image"
+                    style={{
+                      backgroundImage: `url('https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350')`,
+                    }}
+                  ></div>
                   <div className="col-lg-6">
                     <div className="p-5" style={{ borderRadius: 26 }}>
                       <div className="text-center">

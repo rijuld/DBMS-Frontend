@@ -33,45 +33,66 @@ function Add_patient() {
   const [house, sethouse] = useState("");
   const [reasons, setreasons] = useState("");
   const [dob, setdob] = useState("0000-00-00");
+  const [phone_no1, setp1] = useState("0");
+  const [phone_no2, setp2] = useState("");
 
-  const addPatient =() =>{
+  const addPatient = () => {
     console.log(pid);
-    axios({ 
+    axios({
       method: "post",
       url: "http://localhost:5000/patient",
       data: qs.stringify({
         pid: pid,
-      first_name: fname,
-       last_name: lName,
-       time_of_death: time_death,
-       agreement: agreement,
-       braindead : braindead,
-       icuid : icuid,
-       did : did,
-       password : password,
-       pulse : pulse,
-       temp : temp,
-       blood_pressure_dis : bpd,
-       blood_pressure_sys : bps,
-       comorbidity_status : comor,
-       breathing_rate : breathing,
-       blood_group : blood,
-       gender : gender,
-       admission_date : admission,
-       city : city,
-       state : state,
-       pincode : pincode,
-       street : street,
-       house_number :house,
-       reasons : reasons,
-       dob : dob
+        first_name: fname,
+        last_name: lName,
+        time_of_death: time_death,
+        agreement: agreement,
+        braindead: braindead,
+        icuid: icuid,
+        did: did,
+        password: password,
+        pulse: pulse,
+        temp: temp,
+        blood_pressure_dis: bpd,
+        blood_pressure_sys: bps,
+        comorbidity_status: comor,
+        breathing_rate: breathing,
+        blood_group: blood,
+        gender: gender,
+        admission_date: admission,
+        city: city,
+        state: state,
+        pincode: pincode,
+        street: street,
+        house_number: house,
+        reasons: reasons,
+        dob: dob,
       }),
       headers: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     });
-    
 
+    axios({
+      method: "post",
+      url: "http://localhost:5000/patientphone",
+      data: qs.stringify({
+        pid: pid,
+        phone_no: phone_no1,
+      }),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    });
+    phone_no2 &&
+      axios({
+        method: "post",
+        url: "http://localhost:5000/patientphone",
+        data: qs.stringify({
+          pid: pid,
+          phone_no: phone_no2,
+        }),
+      });
   };
   return (
     <div className="container">
@@ -187,6 +208,32 @@ function Add_patient() {
                       setadmission(e.target.value);
                     }}
                   />
+                  <div className="form-group">
+                    <input
+                      className="form-control form-control-user"
+                      type="tel"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Phone Number #1"
+                      name="email"
+                      onChange={(e) => {
+                        setp1(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="form-control form-control-user"
+                      type="tel"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Phone Number #2"
+                      name="email"
+                      onChange={(e) => {
+                        setp2(e.target.value);
+                      }}
+                    />
+                  </div>
                   {/* End: Admission Date */}
                   <small>City</small>
                   <input
@@ -353,6 +400,7 @@ function Add_patient() {
                     onClick={() => {
                       {
                         addPatient();
+                        //add_phoneno();
                       }
                     }}
                   >

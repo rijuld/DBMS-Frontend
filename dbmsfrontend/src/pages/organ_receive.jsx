@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
-function Organ_recieve() {
+function Organ_receive() {
   const { id } = useParams();
 
   const [organ, setOrgan] = useState();
@@ -115,4 +115,4 @@ function Organ_recieve() {
   );
 }
 
-export default Organ_recieve;
+export default Organ_receive;
