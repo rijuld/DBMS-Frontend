@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import { Nav, Navbar,NavDropdown} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 
-function Na() {
+function Na_admin() {
   return (
     <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -14,7 +14,7 @@ function Na() {
       <Nav.Link href="/doctor_profile/1">Doctor</Nav.Link>
       <Nav.Link href="/register_patient">Register</Nav.Link>
       <Nav.Link href="/patient_profile/1">Patient</Nav.Link>
-      <Nav.Link href="/receive_entries">All entries</Nav.Link>
+      
       <NavDropdown title="More" id="collasible-nav-dropdown">
         <NavDropdown.Item href="/doctorall">All Doctors</NavDropdown.Item>
         <NavDropdown.Item href="/icuall">All ICU's</NavDropdown.Item>
@@ -35,5 +35,5 @@ function Na() {
   );
 }
 
-export default Na;
+export default Na_admin;
 

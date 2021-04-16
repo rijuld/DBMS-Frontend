@@ -6,7 +6,7 @@ import Image from "../pages/components/elements/Image.js";
 import ButtonGroup from "../pages/components/elements/ButtonGroup.js";
 import Button from "../pages/components/elements/Button.js";
 import { useHistory } from "react-router-dom";
-
+import Na_admin from "./navigation/navbar_admin"
 const propTypes = {
   ...SectionSplitProps.types,
 };
@@ -58,7 +58,9 @@ const Admin = ({
   };
 
   return (
+    
     <section {...props} className={outerClasses}>
+      <Na_admin />
       <div className="container">
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
@@ -75,14 +77,31 @@ const Admin = ({
             >
               ADD PATIENT
             </Button>
+           <Button
+              tag="a"
+              color="primary"
+              wideMobile
+              onClick={() => {
+                {
+                  history.push("/add_icu");
+                }
+              }}
+            >
+              ADD ICU
+            </Button>
             <Button
               tag="a"
-              color="dark"
+              color="primary"
               wideMobile
-              href="https://github.com/cruip/open-react-template/"
+              onClick={() => {
+                {
+                  history.push("/add_icu");
+                }
+              }}
             >
-              ASK FOR AN ORGAN
+              ADD ICU
             </Button>
+          
           </div>
         </div>
       </div>

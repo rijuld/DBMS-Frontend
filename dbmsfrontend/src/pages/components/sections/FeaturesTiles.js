@@ -45,7 +45,7 @@ const FeaturesTiles = ({
 
   const sectionHeader = {
     title: 'Our Team',
-    paragraph: 'sare ghot except rijul'
+    paragraph: ''
   };
 
   return (
@@ -66,9 +66,7 @@ const FeaturesTiles = ({
                   <h4 className="mt-0 mb-8">
                     Rijul Dahiya
                     </h4>
-                  <p className="m-0 text-sm">
-                    aam(mango) aadmi
-                    </p>
+                  
                 </div>
               </div>
             </div>
@@ -81,9 +79,7 @@ const FeaturesTiles = ({
                   <h4 className="mt-0 mb-8">
                     Devanshi Gupta
                     </h4>
-                  <p className="m-0 text-sm">
-                    Moradabad ki barfi
-                    </p>
+                 
                 </div>
               </div>
             </div>
@@ -96,9 +92,7 @@ const FeaturesTiles = ({
                   <h4 className="mt-0 mb-8">
                     Saloni Singh
                     </h4>
-                  <p className="m-0 text-sm">
-                    jahan bhi me jata vaha ye CT
-                    </p>
+                 
                 </div>
               </div>
             </div>
@@ -112,9 +106,7 @@ const FeaturesTiles = ({
                   <h4 className="mt-0 mb-8">
                     Anuradha Pandey
                     </h4>
-                  <p className="m-0 text-sm">
-                    _/\_
-                    </p>
+                  
                 </div>
               </div>
             </div>

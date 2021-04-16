@@ -6,11 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
-function Organ_recieve() {
+function Organ_receive() {
   const { id } = useParams();
 
   const [organ, setOrgan] = useState();
   const [org, setorg] = useState(1);
+  const [pincode, setpincode] = useState(1);
+  const history = useHistory();
   useEffect(() => {
     axios.get(`http://localhost:5000/organ`).then((res) => {
       const organ = res.data;
@@ -29,9 +31,9 @@ function Organ_recieve() {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     });
+    history.push(`/receive_entries/${org}/${pincode}`);
   };
 
-  const history = useHistory();
   const notify = () => toast("Oops wrong password or username!");
   return (
     <div>
@@ -71,6 +73,19 @@ function Organ_recieve() {
                             </select>
                           </label>
                         </div>
+                        <div className="form-group">
+                          <input
+                            className="form-control form-control-user"
+                            type="email"
+                            id="exampleInputEmail"
+                            aria-describedby="emailHelp"
+                            placeholder="Pincode"
+                            name="email"
+                            onChange={(e) => {
+                              setpincode(e.target.value);
+                            }}
+                          />
+                        </div>
 
                         <label>Hope you find one soon</label>
 
@@ -100,4 +115,4 @@ function Organ_recieve() {
   );
 }
 
-export default Organ_recieve;
+export default Organ_receive;
