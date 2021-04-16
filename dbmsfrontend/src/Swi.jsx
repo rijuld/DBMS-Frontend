@@ -13,18 +13,10 @@ import Register_patient from "./pages/Register_patient";
 import HoverTable_icu from "./pages/table_icu";
 import Landing from "./pages/landing";
 import Patient_Profile from "./pages/profile_patient";
-import Patient_Doctor from "./pages/profile_doctor";
-import Patient from "./Patient";
-import Patientind from "./Patientind";
-import Counter from "./test1";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "./redux/ducks/user";
-import { getPatient } from "./redux/ducks/patient";
 import { getPatientAll } from "./redux/ducks/patientall";
-import Patientcard from "./Patientcard";
 import Profile_Doctor from "./pages/profile_doctor";
-import Na from "./pages/navigation/navbar";
 import Admin from "./pages/admin";
 import Add_patient from "./pages/add_patient";
 
@@ -33,26 +25,10 @@ import Add_icu from "./pages/add_icu";
 import Success from "./pages/success";
 
 const Swi = (props) => {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUser());
-    dispatch(getPatient());
-    dispatch(getPatientAll());
-  }, [dispatch]);
-
-  const user = useSelector((state) => state.user.user);
-  console.log(user);
-  const patient = useSelector((state) => state.patient.patient);
-  console.log(patient);
-  const patientall = useSelector((state) => state.patientall.patientall);
-  console.log(patientall);
-
-  const count = useSelector((state) => state.counter.count);
   const history = useHistory();
   return (
     <div>
-  
       {/* <Link to="/about">About</Link> */}
       {/* <button onClick={()=> history.push('/about')}>About</button> */}
       <Switch>
@@ -69,21 +45,7 @@ const Swi = (props) => {
         <Route exact path="/patientall" children={<HoverTable_patient />} />
         <Route exact path="/doctorall" children={<HoverTable_doctor />} />
         <Route exact path="/icuall" children={<HoverTable_icu />} />
-        <Route
-          exact
-          path="/patient"
-          render={(props) => <Patient {...props} />}
-        />
-        <Route
-          exact
-          path="/patient/:id"
-          render={(props) => <Patientind {...props} />}
-        />
-        <Route
-          exact
-          path="/counter"
-          render={(props) => <Counter {...props} />}
-        />
+
         <Route exact path="/" render={(props) => <Landing {...props} />} />
         <Route
           exact

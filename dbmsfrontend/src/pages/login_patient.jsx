@@ -2,31 +2,31 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
+import qs from "qs";
 function Login_patient() {
   const [pid, setid] = useState("");
   const [password, setlpass] = useState("");
   const history = useHistory();
-  const options = {
-    headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-    },
-  };
+
   const ll = () => {
     console.log("this function is called");
     axios
       .post(
         "http://localhost:5000/login_patient",
-        {
+        qs.stringify({
           pid: pid,
           password: password,
-        },
-        options
+        }),
+        {
+          headers: {
+            "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+          },
+        }
       )
       .then((response) => {
         if (response.data.message) {
           setloginStatus(response.data.message);
-        } else setloginStatus(response.data[0].pid);
+        } else setloginStatus(response.data.pid);
         console.log(response);
       });
   };
@@ -96,22 +96,8 @@ function Login_patient() {
                           className="form-control form-control-user"
                           onClick={() => {
                             {
-                              axios
-                                .post(
-                                  "http://localhost:5000/login_patient",
-                                  {
-                                    pid: pid,
-                                    password: password,
-                                  },
-                                  options
-                                )
-                                .then((response) => {
-                                  if (response.data.message) {
-                                    setloginStatus(response.data.message);
-                                  } else setloginStatus(response.data[0].pid);
-                                  console.log(response);
-                                });
-                              history.push(`/patient_profile/${pid}`);
+                              ll();
+                              //history.push(`/patient_profile/${pid}`);
                             }
                           }}
                         >

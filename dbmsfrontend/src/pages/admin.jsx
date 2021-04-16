@@ -101,14 +101,7 @@ const Admin = ({
             >
               ADD ICU
             </Button>
-            <Button
-              tag="a"
-              color="dark"
-              wideMobile
-              href="https://github.com/cruip/open-react-template/"
-            >
-              ASK FOR AN ORGAN
-            </Button>
+          
           </div>
         </div>
       </div>
