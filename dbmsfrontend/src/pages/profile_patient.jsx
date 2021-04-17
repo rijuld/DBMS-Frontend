@@ -49,23 +49,24 @@ const Patient_Profile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
-  return (
-    <>
-    <Na_patient/>
-      <h1>HELLO {patient && patient.pid}</h1>
-      <ScrollReveal
-        ref={childRef}
-        children={() => (
-          <Home
-            layout={LayoutDefault}
-            patient={patient}
-            patienticu={patienticu}
-            patientdoctor={patientdoctor}
-          />
-        )}
-      />
-    </>
-  );
+
+    return (
+      <>
+        <Na_patient />
+        <h1>HELLO {patient && patient.pid}</h1>
+        <ScrollReveal
+          ref={childRef}
+          children={() => (
+            <Home
+              layout={LayoutDefault}
+              patient={patient}
+              patienticu={patienticu}
+              patientdoctor={patientdoctor}
+            />
+          )}
+        />
+      </>
+    );
 };
 
 export default Patient_Profile;

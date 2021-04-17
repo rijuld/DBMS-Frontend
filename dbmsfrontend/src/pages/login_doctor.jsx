@@ -1,14 +1,19 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import qs from "qs";
-function Login_doctor() {
+import { ToastContainer, toast } from "react-toastify";
+
+let k = 0;
+
+function Login_doctor(props) {
   const [did, setid] = useState("");
   const [password, setlpass] = useState("");
   const history = useHistory();
- 
-  const ll = () => {
+  const [loginStatus, setloginStatus] = useState(0);
+  const ll = (e) => {
+    e.preventDefault();
     console.log("this function is called");
     axios
       .post(
@@ -23,16 +28,19 @@ function Login_doctor() {
           },
         }
       )
-      .then((response) => {
-        if (response.data.message) {
-          setloginStatus(response.data.message);
-        } else setloginStatus(response.data.did);
-        console.log(response);
+      .then((res) => {
+        console.log("this is the response.data.message " + res.status);
+        const t = Number(res.status);
+        if (t == 200) {
+          history.push(`/doctor_profile/${did}`);
+          console.log("we are inside this!");
+          setloginStatus(1);
+        } else {
+          toast("wrong id or password");
+        }
       });
   };
- 
-  const [loginStatus, setloginStatus] = useState("");
- 
+
   return (
     <div>
       <div className="container">
@@ -94,10 +102,13 @@ function Login_doctor() {
                         </div>
                         <button
                           className="form-control form-control-user"
-                          onClick={() => {
+                          onClick={(e) => {
                             {
-                              ll();
-                              //history.push(`/doctor_profile/${did}`);
+                              ll(e);
+
+                              if (loginStatus == 1) {
+                                history.push(`/doctor_profile/${did}`);
+                              }
                             }
                           }}
                         >
@@ -115,6 +126,7 @@ function Login_doctor() {
                           Create an Account!
                         </a>
                       </div>
+                      <ToastContainer />
                     </div>
                   </div>
                 </div>
@@ -126,5 +138,5 @@ function Login_doctor() {
     </div>
   );
 }
- 
+
 export default Login_doctor;
