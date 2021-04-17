@@ -20,6 +20,8 @@ function Add_icu() {
   const [pincode, setpincode] = useState("");
   const [street, setstreet] = useState("");
   const [house, sethouse] = useState("");
+  const [phone_no1, setp1] = useState("0");
+  const [phone_no2, setp2] = useState("");
   
 
   const addicu =() =>{
@@ -47,6 +49,26 @@ function Add_icu() {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     });
+    axios({
+      method: "post",
+      url: "http://localhost:5000/icuphone",
+      data: qs.stringify({
+        icuid: icuid,
+        contact_no: phone_no1,
+      }),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    });
+    phone_no2 &&
+      axios({
+        method: "post",
+        url: "http://localhost:5000/icuphone",
+        data: qs.stringify({
+          icuid: icuid,
+          contact_no: phone_no2,
+        }),
+      });
     
   };
   return (
@@ -128,6 +150,33 @@ function Add_icu() {
                     <div className="col-sm-6">
                       
                     </div>
+                  </div>
+
+                  <div className="form-group">
+                    <input
+                      className="form-control form-control-user"
+                      type="tel"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Phone Number #1"
+                      name="email"
+                      onChange={(e) => {
+                        setp1(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="form-control form-control-user"
+                      type="tel"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Phone Number #2"
+                      name="email"
+                      onChange={(e) => {
+                        setp2(e.target.value);
+                      }}
+                    />
                   </div>
                   
                   <small>City</small>
