@@ -53,7 +53,6 @@ const Patient_Profile = () => {
     return (
       <>
         <Na_patient />
-        <h1>HELLO {patient && patient.pid}</h1>
         <ScrollReveal
           ref={childRef}
           children={() => (

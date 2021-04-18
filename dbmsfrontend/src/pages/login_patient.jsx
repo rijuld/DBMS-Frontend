@@ -3,12 +3,16 @@ import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import qs from "qs";
+import { ToastContainer, toast } from "react-toastify";
+
 function Login_patient() {
   const [pid, setid] = useState("");
   const [password, setlpass] = useState("");
   const history = useHistory();
 
-  const ll = () => {
+  const [loginStatus, setloginStatus] = useState(0);
+  const ll = (e) => {
+    e.preventDefault();
     console.log("this function is called");
     axios
       .post(
@@ -23,15 +27,18 @@ function Login_patient() {
           },
         }
       )
-      .then((response) => {
-        if (response.data.message) {
-          setloginStatus(response.data.message);
-        } else setloginStatus(response.data.pid);
-        console.log(response);
+      .then((res) => {
+        console.log("this is the response.data.message " + res.status);
+        const t = Number(res.status);
+        if (t == 200) {
+          history.push(`/patient_profile/${pid}`);
+          console.log("we are inside this!");
+          setloginStatus(1);
+        } else {
+          toast("wrong id or password");
+        }
       });
   };
-
-  const [loginStatus, setloginStatus] = useState("");
 
   return (
     <div>
@@ -94,10 +101,13 @@ function Login_patient() {
                         </div>
                         <button
                           className="form-control form-control-user"
-                          onClick={() => {
+                          onClick={(e) => {
                             {
-                              ll();
-                              //history.push(`/patient_profile/${pid}`);
+                              ll(e);
+
+                              if (loginStatus == 1) {
+                                history.push(`/patient_profile/${pid}`);
+                              }
                             }
                           }}
                         >
@@ -115,6 +125,7 @@ function Login_patient() {
                           Create an Account!
                         </a>
                       </div>
+                      <ToastContainer />
                     </div>
                   </div>
                 </div>

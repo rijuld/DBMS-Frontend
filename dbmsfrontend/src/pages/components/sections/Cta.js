@@ -52,9 +52,7 @@ const Cta = ({
           className={innerClasses}
         >
           <div className="cta-slogan">
-            <h3 className="m-0">
-              CLICK HERE TO GO TO THE TABLE OF ALL PATIENTS UNDER YOU
-              </h3>
+            
           </div>
       
         </div>

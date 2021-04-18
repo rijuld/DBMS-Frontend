@@ -10,7 +10,7 @@ const Home = (props) => {
 
     <>
       <Testimonial topDivider doctor={doctor} doctordepartment={doctordepartment}/> 
-      <Cta split />
+
     </>
   );
 }

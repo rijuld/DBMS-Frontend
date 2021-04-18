@@ -36,7 +36,7 @@ function Login_doctor(props) {
           console.log("we are inside this!");
           setloginStatus(1);
         } else {
-          toast("wrong id or password");
+          toast("wrong id or password")
         }
       });
   };
