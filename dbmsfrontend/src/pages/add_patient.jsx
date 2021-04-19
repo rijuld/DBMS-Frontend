@@ -8,7 +8,9 @@ import axios from "axios";
 import qs from "qs";
 
 function Add_patient() {
+
   const history = useHistory();
+
   const [fname, setfName] = useState("");
   const [lName, setlName] = useState("");
   const [pid, setpid] = useState("0");
@@ -40,54 +42,52 @@ function Add_patient() {
   const addPatient = (e) => {
     e.preventDefault();
     console.log(pid);
-    axios
-      .post(
-        "http://localhost:5000/patient",
-        qs.stringify({
-          pid: pid,
-          first_name: fname,
-          last_name: lName,
-          time_of_death: time_death,
-          agreement: agreement,
-          braindead: braindead,
-          icuid: icuid,
-          did: did,
-          password: password,
-          pulse: pulse,
-          temp: temp,
-          blood_pressure_dis: bpd,
-          blood_pressure_sys: bps,
-          comorbidity_status: comor,
-          breathing_rate: breathing,
-          blood_group: blood,
-          gender: gender,
-          admission_date: admission,
-          city: city,
-          state: state,
-          pincode: pincode,
-          street: street,
-          house_number: house,
-          reasons: reasons,
-          dob: dob,
-        }),
-        {
-          headers: {
-            "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(
-          "The return status of the backend request is " + res.status
-        );
-        const t = Number(res.status);
-        if (t == 200) {
-          history.push(`patient_profile/${pid}`);
-          console.log("we are inside 200 status");
-        } else {
-          toast("This pid is already in use:(");
-        }
-      });
+    axios({
+      method: "post",
+      url: "http://localhost:5000/patient",
+      data: qs.stringify({
+        pid: pid,
+        first_name: fname,
+        last_name: lName,
+        time_of_death: time_death,
+        agreement: agreement,
+        braindead: braindead,
+        icuid: icuid,
+        did: did,
+        password: password,
+        pulse: pulse,
+        temp: temp,
+        blood_pressure_dis: bpd,
+        blood_pressure_sys: bps,
+        comorbidity_status: comor,
+        breathing_rate: breathing,
+        blood_group: blood,
+        gender: gender,
+        admission_date: admission,
+        city: city,
+        state: state,
+        pincode: pincode,
+        street: street,
+        house_number: house,
+        reasons: reasons,
+        dob: dob,
+      }),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    }).then((res) => {
+      console.log("this is the response.data.message " + res.status);
+      const t = Number(res.status);
+      if (t == 200) {
+        history.push(`/patient_profile/${pid}`);
+        console.log("we are inside this!");
+        
+      } else {
+        toast("wrong id or password" );
+      }
+    });;;
+
+
     axios({
       method: "post",
       url: "http://localhost:5000/patientphone",
@@ -432,6 +432,7 @@ function Add_patient() {
                     Already have an account? Login!
                   </a>
                 </div>
+                <ToastContainer />
               </div>
               <ToastContainer />
             </div>
