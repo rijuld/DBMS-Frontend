@@ -20,7 +20,7 @@ import Profile_Doctor from "./pages/profile_doctor";
 import Admin from "./pages/admin";
 import Add_patient from "./pages/add_patient";
 import Add_doctor from "./pages/add_doctor";
-
+import Profile_icu from "./pages/profile_icu";
 import Add_icu from "./pages/add_icu";
 
 import Success from "./pages/success";
@@ -45,6 +45,11 @@ const Swi = (props) => {
           exact
           path="/patient_profile/:id"
           children={<Patient_Profile />}
+        />
+          <Route
+          exact
+          path="/icu_profile"
+          children={<icu_Profile />}
         />
         <Route exact path="/patientall" children={<HoverTable_patient />} />
         <Route exact path="/doctorall" children={<HoverTable_doctor />} />

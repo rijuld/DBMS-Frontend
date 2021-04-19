@@ -8,6 +8,7 @@ import axios from "axios";
 import qs from "qs";
 
 function Add_patient() {
+  const history =useHistory();
   const [fname, setfName] = useState("");
   const [lName, setlName] = useState("");
   const [pid, setpid] = useState("0");
@@ -36,7 +37,8 @@ function Add_patient() {
   const [phone_no1, setp1] = useState("0");
   const [phone_no2, setp2] = useState("");
 
-  const addPatient = () => {
+  const addPatient = (e) => {
+    e.preventDefault();
     console.log(pid);
     axios({
       method: "post",
@@ -71,7 +73,17 @@ function Add_patient() {
       headers: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
-    });
+    }).then((res) => {
+      console.log("this is the response.data.message " + res.status);
+      const t = Number(res.status);
+      if (t == 200) {
+        history.push(`/patient_profile/${pid}`);
+        console.log("we are inside this!");
+        
+      } else {
+        toast("wrong id or password" );
+      }
+    });;;
 
     axios({
       method: "post",
@@ -397,9 +409,9 @@ function Add_patient() {
                   <button
                     className="btn btn-primary btn-block text-white btn-user"
                     type="submit"
-                    onClick={() => {
+                    onClick={(e) => {
                       {
-                        addPatient();
+                        addPatient(e);
                         //add_phoneno();
                       }
                     }}
@@ -417,6 +429,7 @@ function Add_patient() {
                     Already have an account? Login!
                   </a>
                 </div>
+                <ToastContainer />
               </div>
             </div>
           </div>
