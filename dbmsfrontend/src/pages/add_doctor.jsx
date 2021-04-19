@@ -60,6 +60,17 @@ function Add_doctor() {
           phone_no: phone_no2,
         }),
       });
+      axios({
+        method: "post",
+        url: "http://localhost:5000/doctorphone",
+        data: qs.stringify({
+          did: did,
+          icuid: icuid,
+        }),
+        headers: {
+          "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        },
+      });
   };
   return (
     <div className="container">
