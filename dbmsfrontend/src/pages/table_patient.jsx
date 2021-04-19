@@ -8,6 +8,8 @@ import { getPatientAll } from "../redux/ducks/patientall";
 import { usePagination } from "react-table";
 import { Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
+import Na_patient from "./navigation/navbar_patient"; 
+
 import {
   Toolbar,
   Typography,
@@ -61,6 +63,7 @@ function HoverTable_patient(props) {
   console.log(patientall);
   return (
     <>
+    <Na_patient />
       <h1>Patient Table</h1>
       <Paper className={classes.root}>
         <Toolbar></Toolbar>

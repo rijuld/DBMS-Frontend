@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIcuAll } from "../redux/ducks/icuall";
 import {usePagination} from 'react-table';
 import {Switch,Route,Link} from "react-router-dom";
+import Na_admin from "./navigation/navbar_admin"; 
 
 import {
   Toolbar,
@@ -61,7 +62,8 @@ function HoverTable_icu(props) {
   console.log(icuall);
 
   return (
-      <>
+    <>
+    <Na_admin />
      
     <Paper className={classes.root}>
       <Toolbar>

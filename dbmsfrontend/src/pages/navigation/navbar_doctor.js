@@ -12,7 +12,7 @@ function Na_doctor() {
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
       <Nav.Link href="/doctor_profile/1">Doctor</Nav.Link>
-      <Nav.Link href="/register_patient">Register</Nav.Link>
+      <Nav.Link href="/add_patient">Register</Nav.Link>
    
       <NavDropdown title="More" id="collasible-nav-dropdown">
         <NavDropdown.Item href="/patientall">All Patients</NavDropdown.Item>

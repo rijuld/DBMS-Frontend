@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDoctorAll } from "../redux/ducks/doctorall";
 import {usePagination} from 'react-table';
 import {Switch,Route,Link} from "react-router-dom";
+import Na_doctor from "./navigation/navbar_doctor"; 
 
 import {
   Toolbar,
@@ -61,7 +62,8 @@ function HoverTable_doctor(props) {
   console.log(doctorall);
 
   return (
-      <>
+    <>
+    <Na_doctor />
       <h1>Doctor Table</h1>
     <Paper className={classes.root}>
       <Toolbar>
@@ -90,9 +92,10 @@ function HoverTable_doctor(props) {
         </TableBody>
       </Table>
     </Paper>
+
     </>
   );
-}
+};
 
 HoverTable_doctor.propTypes = {
   classes: PropTypes.object.isRequired,

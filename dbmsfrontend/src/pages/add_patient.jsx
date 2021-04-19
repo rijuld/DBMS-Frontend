@@ -8,9 +8,7 @@ import axios from "axios";
 import qs from "qs";
 
 function Add_patient() {
-
-  const history = useHistory();
-
+  const history =useHistory();
   const [fname, setfName] = useState("");
   const [lName, setlName] = useState("");
   const [pid, setpid] = useState("0");
@@ -86,7 +84,6 @@ function Add_patient() {
         toast("wrong id or password" );
       }
     });;;
-
 
     axios({
       method: "post",
@@ -434,7 +431,6 @@ function Add_patient() {
                 </div>
                 <ToastContainer />
               </div>
-              <ToastContainer />
             </div>
           </div>
         </div>

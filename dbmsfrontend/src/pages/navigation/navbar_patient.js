@@ -11,7 +11,7 @@ function Na_patient() {
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link href="/register_patient">Register</Nav.Link>
+      <Nav.Link href="/add_patient">Register</Nav.Link>
       <Nav.Link href="/patient_profile/1">Patient</Nav.Link>
       <NavDropdown title="More" id="collasible-nav-dropdown">
         <NavDropdown.Divider />
