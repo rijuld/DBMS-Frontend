@@ -6,9 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
- 
+
 function Add_doctor() {
-  const history =useHistory();
+  const history = useHistory();
   const [did, setdid] = useState("");
   const [post, setpost] = useState("N/A");
   const [dob, setdob] = useState("00-00-0000");
@@ -17,10 +17,11 @@ function Add_doctor() {
   const [gender, setgender] = useState("");
   const [dept_id, setdept_id] = useState("");
   const [password, setpassword] = useState("");
-  const [icuid, seticuid] = useState("");
+  const [icuid1, seticuid1] = useState("");
+  const [icuid2, seticuid2] = useState("");
   const [phone_no1, setp1] = useState("0");
   const [phone_no2, setp2] = useState("");
- 
+
   const addDoctor = (e) => {
     //console.log(did);
     e.preventDefault();
@@ -46,12 +47,11 @@ function Add_doctor() {
       if (t == 200) {
         history.push(`/doctor_profile/${did}`);
         console.log("we are inside this!");
-        
       } else {
-        toast("wrong id or password" );
+        toast("wrong id or password");
       }
-    });;;;
- 
+    });
+
     axios({
       method: "post",
       url: "http://localhost:5000/doctorphone",
@@ -71,6 +71,29 @@ function Add_doctor() {
           did: did,
           phone_no: phone_no2,
         }),
+      });
+    axios({
+      method: "post",
+      url: "http://localhost:5000/icu_doc",
+      data: qs.stringify({
+        did: did,
+        icuid: icuid1,
+      }),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    });
+    icuid2 &&
+      axios({
+        method: "post",
+        url: "http://localhost:5000/icu_doc",
+        data: qs.stringify({
+          did: did,
+          icuid: icuid2,
+        }),
+        headers: {
+          "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        },
       });
   };
   return (
@@ -148,10 +171,23 @@ function Add_doctor() {
                       type="number"
                       id="exampleInputEmail"
                       aria-describedby="emailHelp"
-                      placeholder="ICU ID"
+                      placeholder="ICU ID #1"
                       name="email"
                       onChange={(e) => {
-                        seticuid(e.target.value);
+                        seticuid1(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="form-control form-control-user"
+                      type="number"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="ICU ID #2"
+                      name="email"
+                      onChange={(e) => {
+                        seticuid2(e.target.value);
                       }}
                     />
                   </div>
