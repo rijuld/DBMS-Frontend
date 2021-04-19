@@ -8,6 +8,7 @@ import axios from "axios";
 import qs from "qs";
  
 function Add_doctor() {
+  const history =useHistory();
   const [did, setdid] = useState("");
   const [post, setpost] = useState("N/A");
   const [dob, setdob] = useState("00-00-0000");
@@ -20,8 +21,9 @@ function Add_doctor() {
   const [phone_no1, setp1] = useState("0");
   const [phone_no2, setp2] = useState("");
  
-  const addDoctor = () => {
+  const addDoctor = (e) => {
     //console.log(did);
+    e.preventDefault();
     axios({
       method: "post",
       url: "http://localhost:5000/doctor",
@@ -38,7 +40,17 @@ function Add_doctor() {
       headers: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
-    });
+    }).then((res) => {
+      console.log("this is the response.data.message " + res.status);
+      const t = Number(res.status);
+      if (t == 200) {
+        history.push(`/doctor_profile/${did}`);
+        console.log("we are inside this!");
+        
+      } else {
+        toast("wrong id or password" );
+      }
+    });;;;
  
     axios({
       method: "post",
@@ -253,9 +265,9 @@ function Add_doctor() {
                   <button
                     className="btn btn-primary btn-block text-white btn-user"
                     type="submit"
-                    onClick={() => {
+                    onClick={(e) => {
                       {
-                        addDoctor();
+                        addDoctor(e);
                         //add_phoneno();
                       }
                     }}
@@ -274,6 +286,7 @@ function Add_doctor() {
                   </a>
                 </div>
               </div>
+              <ToastContainer />
             </div>
           </div>
         </div>

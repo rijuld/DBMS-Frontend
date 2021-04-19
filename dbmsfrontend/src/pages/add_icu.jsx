@@ -9,6 +9,7 @@ import axios from "axios";
 import qs from "qs";
 
 function Add_icu() {
+  const history =useHistory();
   const [hName, sethName] = useState("");
   const [icut, seticut] = useState("0");
   const [icuid, seticuid] = useState("0");
@@ -24,8 +25,9 @@ function Add_icu() {
   const [phone_no2, setp2] = useState("");
   
 
-  const addicu =() =>{
+  const addicu =(e) =>{
     console.log(icuid);
+    e.preventDefault();
     axios({ 
       method: "post",
       url: "http://localhost:5000/icu",
@@ -48,7 +50,17 @@ function Add_icu() {
       headers: {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
-    });
+    }).then((res) => {
+      console.log("this is the response.data.message " + res.status);
+      const t = Number(res.status);
+      if (t == 200) {history.push("/admin")
+        history.push("/admin")
+        console.log("we are inside this!");
+        
+      } else {
+        toast("wrong id or password" );
+      }
+    });;
     axios({
       method: "post",
       url: "http://localhost:5000/icuphone",
@@ -229,9 +241,9 @@ function Add_icu() {
                   <button
                     className="btn btn-primary btn-block text-white btn-user"
                     type="submit"
-                    onClick={() => {
+                    onClick={(e) => {
                       {
-                        addicu();
+                        addicu(e);
                       }
                     }}
                   >
@@ -240,6 +252,7 @@ function Add_icu() {
                 </form>
                 
               </div>
+              <ToastContainer />
             </div>
           </div>
         </div>
