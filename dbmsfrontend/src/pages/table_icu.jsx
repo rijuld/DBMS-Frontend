@@ -62,7 +62,7 @@ function HoverTable_icu(props) {
 
   return (
       <>
-      <h1>ICU Table</h1>
+     
     <Paper className={classes.root}>
       <Toolbar>
         

@@ -5,7 +5,8 @@ import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
 import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
-
+import pic2 from "./pic2.gif";
+import generatePDF from "../../services/reportGenerator";
 const propTypes = {
   ...SectionSplitProps.types
 }
@@ -65,6 +66,7 @@ const FeaturesSplit = ({
     >
       
       <div className="container">
+      
         
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
@@ -76,8 +78,16 @@ const FeaturesSplit = ({
                   <Button tag="a" color="dark" wideMobile href={`/organ_receive/${t}`}>
                     ASK FOR AN ORGAN
                     </Button>
+                    
+                    <button
+              className="btn btn-primary"
+              onClick={() => generatePDF(patient)}
+            >
+              Generate report
+            </button>
+                   
                   
-     
+                    
 
             <div className="split-item">
               <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
@@ -199,7 +209,12 @@ const FeaturesSplit = ({
                
               </div>
             </div>
-
+            <img
+        src={pic2}
+        alt="fireSpot"
+        className="col-12 justify-content-center"
+        style={{padding:100,}}
+      />
 
             
 

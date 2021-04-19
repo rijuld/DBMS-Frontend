@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import About from "./About";
 import HoverTable_patient from "./pages/table_patient";
@@ -19,20 +19,24 @@ import { getPatientAll } from "./redux/ducks/patientall";
 import Profile_Doctor from "./pages/profile_doctor";
 import Admin from "./pages/admin";
 import Add_patient from "./pages/add_patient";
+import Add_doctor from "./pages/add_doctor";
 
 import Add_icu from "./pages/add_icu";
 
 import Success from "./pages/success";
 
 const Swi = (props) => {
-
   const history = useHistory();
   return (
     <div>
       {/* <Link to="/about">About</Link> */}
       {/* <button onClick={()=> history.push('/about')}>About</button> */}
       <Switch>
-        <Route exact path="/login_doctor" children={<Login_doctor />} />
+        <Route
+          exact
+          path="/login_doctor"
+          children={<Login_doctor />}
+        />
         <Route exact path="/login_patient" children={<Login_patient />} />
         <Route exact path="/login_admin" children={<Login_admin />} />
         <Route exact path="/about" children={<About />} />
@@ -45,7 +49,6 @@ const Swi = (props) => {
         <Route exact path="/patientall" children={<HoverTable_patient />} />
         <Route exact path="/doctorall" children={<HoverTable_doctor />} />
         <Route exact path="/icuall" children={<HoverTable_icu />} />
-
         <Route exact path="/" render={(props) => <Landing {...props} />} />
         <Route
           exact
@@ -56,6 +59,11 @@ const Swi = (props) => {
           exact
           path="/add_patient"
           render={(props) => <Add_patient {...props} />}
+        />
+         <Route
+          exact
+          path="/add_doctor"
+          render={(props) => <Add_doctor {...props} />}
         />
         <Route
           exact

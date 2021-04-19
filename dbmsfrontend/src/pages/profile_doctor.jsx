@@ -17,11 +17,13 @@ const trackPage = (page) => {
 const Profile_Doctor = () => {
   const { id } = useParams();
   const [doctor, setDoctor] = useState();
+  const [hello, setHello] = useState(0);
   const [doctordepartment, setDoctorDepartment] = useState();
   useEffect(() => {
     axios.get(`http://localhost:5000/doctor/${id}`).then((res) => {
       const doctor = res.data;
       setDoctor(doctor);
+      setHello(1);
     });
   }, []);
   useEffect(() => {

@@ -6,7 +6,9 @@ import Image from "../pages/components/elements/Image.js";
 import ButtonGroup from "../pages/components/elements/ButtonGroup.js";
 import Button from "../pages/components/elements/Button.js";
 import { useHistory } from "react-router-dom";
-import Na_admin from "./navigation/navbar_admin"
+import Na_admin from "./navigation/navbar_admin";
+import pic3 from "./pic3.gif";
+import HoverTable_icu from "./table_icu";
 const propTypes = {
   ...SectionSplitProps.types,
 };
@@ -54,14 +56,21 @@ const Admin = ({
   );
 
   const sectionHeader = {
-    title: `Hi ADMIN`,
+    title: ``,
+    
   };
 
   return (
-    
+
     <section {...props} className={outerClasses}>
+  
       <Na_admin />
-      <div className="container">
+      <h1>Hi admin</h1>
+      <div className="container"
+      style={{ 
+        backgroundImage: `url(${pic3})` ,
+        borderRadius: 20,
+      }}>
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
           <div className={splitClasses}>
@@ -77,7 +86,7 @@ const Admin = ({
             >
               ADD PATIENT
             </Button>
-           <Button
+            <Button
               tag="a"
               color="primary"
               wideMobile
@@ -95,16 +104,18 @@ const Admin = ({
               wideMobile
               onClick={() => {
                 {
-                  history.push("/add_icu");
+                  history.push("/add_doctor");
                 }
               }}
             >
-              ADD ICU
+              ADD DOCTOR
             </Button>
-          
           </div>
         </div>
+        <HoverTable_icu/>
       </div>
+      
+     
     </section>
   );
 };
