@@ -22,18 +22,27 @@ The ICU table will contain the location of the ICU, name, ICU type contact no, h
 Each doctor has a unique ID ,name ,age ,gender ,Department, post , phone no,  etc.  
 There will also be a department table to keep track of the doctors registered in that department.
 
-###CONSTRAINTS
+### CONSTRAINTS
 
-ICU table, with ICUID as PRIMARY KEY, which cannot be NULL and has to be UNIQUE. Address contains the address of the hospital, which cannot be NULL.
-Type is the FOREIGN KEY to ICU Type, which denoted the category of ICU, which increments itself.
-The patient table specifies details of the patients enrolled, with ICU as the foreign key. PatientID is >0 and it auto increments, which implies it’s unique. PatientName, Relative’s phone number, Admission Time cannot take NULL values. Brain Death and Agreement for donation of organs after death take binary values, 0 or 1. Patient’s birthday should be in YYYYMMDD format and he should be <= 80 years old. PatientBloodType is FOREIGN KEY to Blood donors.
-Blood donors contains Donor_ID as primary key, and blood group type shouldn’t be NULL
-Doctor Table contains details of the doctor, where the Doctor’s ID and Department ID cannot be NULL. 
-Department Table’s ID auto increments itself, and Department Name cannot be NULL.
-Blood Group’s ID auto increments and the name of the blood group cannot be NULL.
-GUI Level constraint: The password should automatically mask with asterisks(*) while it’s being typed.
-Only the admin can add details of ICU in the database.
-If the patient is declared dead, and he has signed up for donating his organ, the doctor should make required changes in the database. 
+1.  ICU table, with ICUID as PRIMARY KEY, which cannot be NULL and has to be UNIQUE. Address contains the address of the hospital, which cannot be NULL.
+
+2.  Type is the FOREIGN KEY to ICU Type, which denoted the category of ICU, which increments itself.
+
+3.  The patient table specifies details of the patients enrolled, with ICU as the foreign key. PatientID is >0 and it auto increments, which implies it's unique. PatientName, Relative's phone number, Admission Time cannot take NULL values. Brain Death and Agreement for donation of organs after death take binary values, 0 or 1. Patient's birthday should be in YYYYMMDD format and he should be <= 80 years old. PatientBloodType is FOREIGN KEY to Blood donors.
+
+4.  Blood donors contains Donor_ID as primary key, and blood group type shouldn't be NULL
+
+5.  Doctor Table contains details of the doctor, where the Doctor's ID and Department ID cannot be NULL. 
+
+6.  Department Table's ID auto increments itself, and Department Name cannot be NULL.
+
+7.  Blood Group's ID auto increments and the name of the blood group cannot be NULL.
+
+8.  GUI Level constraint: The password should automatically mask with asterisks(*) while it's being typed.
+
+9.  Only the admin can add details of ICU in the database.
+
+10. If the patient is declared dead, and he has signed up for donating his organ, the doctor should make required changes in the database.
 
 
 ### FUNCTIONALITY
