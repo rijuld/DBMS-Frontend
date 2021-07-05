@@ -36,7 +36,7 @@ Only the admin can add details of ICU in the database.
 If the patient is declared dead, and he has signed up for donating his organ, the doctor should make required changes in the database. 
 
 
-###FUNCTIONALITY
+### FUNCTIONALITY
 -   Authorised login and sign-up for donors, patients seeking organs/blood donors, doctors and Admin. Signing up will automatically add them to the relevant database
 
 -   ICUs/Doctors can be added to the database by admin
@@ -60,17 +60,17 @@ If the patient is declared dead, and he has signed up for donating his organ, th
 -   Delete doctors from ICU
 
 
-GUI/NAVIGATION
+### GUI/NAVIGATION
 
 Login/Sign-up Admin, a doctor or a patient
 
-Admin 
+### Admin 
 
 1.  Add an ICU button and add a doctor button
 
 2.  Button to add an ICU, clicking the add button takes the user back to page 1 and the icu gets added
 
-Doctor
+### Doctor
 
 1.  Add a patient button: Adds a patient with all the appropriate details. Clicking on the done button adds to the patient table and takes the user back to main doctor page
 
@@ -86,15 +86,15 @@ Doctor
 
 7.  Available matches page(sorted with location)(list all the donors matching and request them)=> the other client gets notified and the patient from the other table gets deleted
 
-Patient page 3
+### Patient page 
 
 1.  Patient can view all the doctors on page 2.2 and their information on this page. He can edit that he wants to be a donor or not
 
 2.  Logout button takes back to the first page, no page is accessible if the user isn't logged in
 
-TECHNOLOGY USED
+## TECHNOLOGY USED
 
-Web Applicatio
+### Web Applicatio
 
 2.  NodeJS +Express and MySQL  in the backend
 
